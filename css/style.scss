@@ -1,0 +1,689 @@
+
+
+//*------------------*
+//*  カラーとフォント
+//*------------------*
+
+//color
+$font-color__black:#282F35;
+$font-color__gray:#171717;
+$font-color__white:#FFFFFF;
+
+//font-family
+$font-main:'Noto Serif', serif;
+$font-ja:'Noto Serif JP', serif; 
+
+//*------------------*
+//*  レスポンシブ
+//*------------------*
+
+//ブレイクポイント
+$tb: 959px; //タブレット
+$mb: 375px; //スマホ
+
+//@mediaのフォーマット
+// タブレット
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+
+//スマホ
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+
+//*------------------*
+//*  font-size定義
+//*------------------*
+//$sizeにpx表示を入れて使う
+
+@mixin rem($size) {
+  font-size: $size + px; /*IE9以前に対応する*/
+  font-size: ($size / 16) + rem;
+}
+
+//*------------------*
+//*  bace(共通)
+//*------------------*
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html .noscroll{
+  overflow: hidden;
+}
+
+body {
+  @include rem(10);
+  letter-spacing: 0.05em;
+  // line-height: 2;
+  font-family: $font-main;
+
+  .noscroll{
+    overflow: hidden;
+  }
+//フェードインでページ表示設定①
+  animation: fade 5s;
+}
+//フェードインでページ表示設定②
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+//imgの共通設定
+//画像の下に小さな余白が出来るのを防ぐ
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+//sectionの共通設定
+.section{
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section__inner{
+  max-width: 1030px;
+  margin: 0 auto 70px;
+  padding: 0 15px;
+
+  @include mobile(){
+    margin-bottom: 40px;
+    padding: 0;
+  }
+}
+
+.section__ttl{
+  max-width: 1030px;
+  margin: 0 auto 80px;
+  padding: 0 15px;
+  @include rem(60);
+  letter-spacing: 0.1rem;
+  line-height: 0.8;
+  font-weight: bold;
+  font-style: italic;
+  align-items: center;
+
+  &::after{
+    content: '';
+    display: inline-block;
+    background-color: #282F35;
+    width: 200px;
+    height: 5px;
+    margin-left: 30px;
+    vertical-align: middle;
+
+    @include mobile(){
+      width: 90px;
+    }
+
+  }
+
+  @include mobile(){
+    @include rem(30);
+    line-height: 0.4;
+  }
+}
+
+.section__ttl.white{
+  color: $font-color__white;
+}
+.section__ttl.white::after{
+    background-color: #fff;
+}
+
+//section__ttlの右寄せ
+.section__ttl.ttl-right{
+  text-align: right;
+}
+.section__ttl.ttl-right::after{
+  text-align: right;
+}
+
+.section__footer{
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 15px 40px;
+  @include rem(90);
+  letter-spacing: 0.05rem;
+  line-height: 1.66;
+  font-weight: bold;
+  opacity: 0.05;
+
+  @include mobile(){
+    @include rem(40);
+      line-height: 1.5;
+  }
+}
+
+.section__footer.white{
+  color: $font-color__white;
+}
+
+//section__footerの右寄せ
+.section__footer.ttl-right{
+  text-align: right;
+}
+
+.btn{
+  width: 235px;
+  background-color: #F7D43F;
+  @include rem(16);
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 30px;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus{
+    opacity: 0.7;
+    transition: 0.3s;
+  }
+
+  a{
+    color: $font-color__gray;
+    display: block;
+  }
+
+}
+
+ul{
+  list-style: none;
+}
+
+.sp-br{
+  display: none;
+  @include tablet(){
+    display: block;
+  }
+}
+.pc-br{
+  display: block;
+  @include tablet(){
+    display: none;
+  }
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+//*------------------*
+//*  ヘッダー
+//*------------------*
+
+.header{
+  width: 100%;
+  height: 96px;
+  color: $font-color__white;
+  padding-top: 23px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: .3s;
+
+  @include mobile(){
+    width: 375px;
+  }
+
+  &__inner{
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__ttl{
+    @include rem(26);
+    line-height: 1.4;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  &__nav{
+    @include rem(16);
+    line-height: 1.4;
+
+    @include tablet(){
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #282F35;
+    }
+  }
+
+}
+
+.fixed{
+  position: fixed;
+  background-color: #282F35;
+  transition: .3s;
+}
+
+
+.nav__lists{
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-style: italic;
+  list-style: none;
+
+  @include tablet(){
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+.nav__list{
+  @include tablet(){
+    margin: 0 0 30px;
+  }
+}
+.nav__list:last-of-type{
+  @include tablet(){
+    margin-bottom: 0;
+  }
+}
+
+
+//*------------------*
+//* ハンバーガー
+//*------------------*
+
+// ボタンの表示
+.hamburger-btn{
+  display:none;
+
+  @include tablet{
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    margin: 0 4vw;
+    z-index: 20;
+  }
+}
+
+.hamburger-btn__parts {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  position: absolute;
+  transition: transform 0.5s, opacity 0.5s;
+
+  &.-top {
+    top: 0;
+  }
+  &.-middle {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  &.-bottom {
+    bottom: 0;
+  }
+}
+// タップしたら回して×マークにする動き
+// activeクラスを付け外しして実装
+.hamburger-btn.active {
+  .hamburger-btn__parts {
+    &.-top {
+      transform: translateY(8.5px) rotate(-315deg);
+    }
+    //2つ目のspanを飛ばす！！
+    &.-middle {
+      transform: translateX(200px) 
+    }
+    //3番目のspanを45度に
+    &.-bottom {
+      transform: translateY(-8.5px) rotate(315deg);
+    }
+  }
+}
+
+//activeクラスをつけたら、スライドイン
+.header-nav.active {
+  transform: translateX(0);
+}
+
+//*------------------*
+//* トップ
+//*------------------*
+
+.top{
+  height: 100vh;
+  min-height: 550px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &__inner{
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+  }
+
+  &__copy{
+    padding: 0 15px;
+    text-align: center;
+    color: $font-color__white;
+    position: absolute;
+    top: 409px;
+    left: 120px;
+
+    @include tablet(){
+      left: 12vw;
+    }
+
+    @include mobile(){
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  &__ttl{
+    @include rem(70);
+    line-height: 0.7;
+    font-weight: bold;
+    margin-bottom: 31px;
+
+    @include mobile(){
+      @include rem(37);
+      line-height: 0.6;
+      white-space: nowrap;
+    }
+  }
+
+  &__text{
+    @include rem(40);
+    line-height:1.25;
+    font-family: $font-ja;
+    font-weight: bold;
+    margin-top: 23px;
+
+    @include mobile(){
+      @include rem(30);
+      line-height: 1.2;
+    }
+  }
+
+  img{
+    height: 100vh;
+    min-height: 550px;
+    object-fit: cover;
+  }
+}
+
+.slick-arrow{
+  display: none !important;
+}
+
+//*------------------*
+//* コンセプト
+//*------------------*
+
+.concept{
+  margin-top: 100px;
+
+  &__copy{
+    @include rem(30);
+    line-height: 1.7;
+    font-family: $font-ja;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 70px;
+
+    @include mobile(){
+      @include rem(20);
+      line-height: 1.5;
+    }
+  }
+
+  &__contents{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile(){
+      display: block;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+  }
+
+  &__description{
+    max-width: 440px;
+    @include rem(16);
+    line-height: 2;
+    font-family: $font-ja;
+    font-weight: bold;
+
+    @include mobile(){
+      margin-bottom: 30px;
+    }
+  }
+
+  &__img{
+    width: 440px;
+
+    @include mobile(){
+      width: 100%;
+      margin: 0;
+    }
+
+  }
+}
+
+//*------------------*
+//* ワークス
+//*------------------*
+
+.works{
+  background-image: url(../img/works-bgi@2x.jpg);
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+
+  &__contents{
+    margin-top: 80px;
+  }
+
+  &__cards{
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet(){
+      flex-wrap: wrap;
+    }
+
+    @include mobile(){
+      display: block;
+    }
+
+  }
+
+  &__card{
+    max-width: 32%;
+    background-color: #fff;
+
+
+
+    @include tablet{
+      width: 320px;
+      max-width: 100%;
+      margin: 0 auto 30px;
+    }
+
+  }
+  
+  &__card-img{
+    width: 100%;
+
+    img{
+      width: 100vw;
+      object-fit: cover;
+    }
+  }
+
+  &__card-description{
+    padding: 25px 20px;
+    @include rem(16);
+    line-height: 1.88;
+    font-family: $font-ja;
+    color: $font-color__gray;
+
+  }
+
+  &__more{
+    margin: 80px auto 0;
+  }
+}
+
+//*------------------*
+//* サービス
+//*------------------*
+
+.service{
+  margin-top: 100px;
+  padding: 0;
+
+  &__contents{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile(){
+      display: block;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__content{
+    width: 100%;
+    height: 320px;
+    position: relative;
+
+    a{
+      display: block;
+      width: 100%;
+      line-height: 320px;
+      text-align: center;
+      @include rem(40);
+      font-weight: bold;
+      font-style: italic;
+      transition: 0.3s;
+      
+        &:hover{
+          background-color: rgba(40, 47, 53, 0.7);
+          transition: 0.3s;
+        }
+
+        @include mobile(){
+          @include rem(20);
+        }
+      }
+
+      @include mobile(){
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+.hearing{
+  background-image: url(../img/service-img01@2x.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.planning{
+  background-image: url(../img/service-img02@2x.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.direction{
+  background-image: url(../img/service-img03@2x.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+//*------------------*
+//* コンタクト
+//*------------------*
+
+.contact{
+  width: 100%;
+  background-image: url(../img/contact-bgi@2x.jpg);
+  background-size: cover;
+  background-position: center;
+  padding-top: 109px;
+
+  &__contents{
+    margin-top: 80px;
+    text-align: center;
+
+  }
+
+  &__text{
+    @include rem(20);
+    color: $font-color__white;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  &__btn{
+    margin: 0 auto;
+  }
+
+}
+
+.footer{
+  width: 100%;
+  height: 80px;
+  @include rem(19);
+  line-height: 80px;
+  text-align: center;
+
+  @include mobile(){
+    @include rem(14);
+  }
+}

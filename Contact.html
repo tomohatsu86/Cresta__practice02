@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cresta practice02-contact</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css"
+    />
+    <link
+    href=“https://fonts.googleapis.com/css?family=Noto+Serif|Noto+Serif+JP&display=swap”
+    rel=“stylesheet”>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="./css/contact.css" />
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="header__ttl"><a href="/index.html">Creata Design</a></h1>
+        <!-- ナビゲーション -->
+        <nav class="header__nav">
+          <ul class="nav__lists">
+            <li class="nav__list"><a href="/index.html">Concept</a></li>
+            <li class="nav__list"><a href="/index.html">Service</a></li>
+            <li class="nav__list"><a href="/index.html">Works</a></li>
+            <li class="nav__list"><a href="/index.html">Contact</a></li>
+          </ul>
+          <!-- /.nav__lists -->
+        </nav>
+        <!-- /.header__nav -->
+
+        <!-- ハンバーガーメニュー -->
+        <!-- ハンバーガーボタン -->
+        <button class="hamburger-btn">
+          <span class="hamburger-btn__parts -top"></span>
+          <span class="hamburger-btn__parts -middle"></span>
+          <span class="hamburger-btn__parts -bottom"></span>
+        </button>
+        <!-- /.hamburger-btn -->
+        <!-- ここまでハンバーガーメニュー -->
+      </div>
+      <!-- /.section__inner -->
+    </header>
+    <!-- /.header -->
+
+    <!-- メイン -->
+    <main>
+      <!-- トップ -->
+      <div class="top">
+        <div class="top__inner">
+          <h1 class="top__ttl">Contact</h1><!-- /.top__ttl -->
+          <p class="top__footer">Contact us</p>
+          <!-- /.top__footer -->
+        </div>
+        <!-- /.top__inner -->
+      </div>
+      <!-- /.top -->
+
+      <!-- コンタクト -->
+      <form class="contact-form">
+        <div class="contact-form__inner">
+          <p>お問い合わせ内容</p>
+          <div class="contact-from__checkbox">
+            <input type="checkbox" name="Document" id="Document" value="Document">
+            <label for="Document">資料請求</label>
+          </div>
+          <div class="contact-from__checkbox">
+            <input type="checkbox" name="tel-Consultation" id="tel-Consultation" value="tel-Consultation">
+            <label for="tel-Consultation">お電話でのご相談を希望</label>
+          </div>
+          <div class="contact-from__checkbox">
+            <input type="checkbox" name="Offer" id="Offer" value="Offer">
+            <label for="Offer">申し込み</label>
+          </div>
+          <div class="contact-form__item">
+            <label for="input-name">担当者名</label>
+            <input  type="text" name="input-name" id="input-name">
+          </div>
+          <div class="contact-form__item">
+            <label for="input-tel">電話番号</label>
+            <input  type="text" name="input-tel" id="input-tel">
+          </div>
+          <div class="contact-form__item">
+            <label for="input-mail">メールアドレス</label>
+            <input  type="text" name="input-mail" id="input-mail">
+          </div>
+          <div class="contact-form__item">
+            <label for="input-other">その他</label>
+            <textarea type="text"  name="input-other" id="input-other" cols="30" rows="10"></textarea>
+          </div><!-- /.contact-form__item -->
+          <div class="contact-form__send">
+            <input type="submit" value="送信" class="contact__form-btn btn">
+          </div><!-- /.contact__form-send -->
+        </div>
+        <!-- /.section__inner -->
+      </form>
+      <!-- /.form -->
+    </main>
+    <footer class="footer">
+      <p class="footer__copy">&copy;cresta.design all rights reserved</p>
+      <!-- /.footer__copy -->
+    </footer>
+    <!-- /.footer -->
+
+    <!-- jsの読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
